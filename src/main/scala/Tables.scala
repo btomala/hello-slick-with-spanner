@@ -1,4 +1,4 @@
-import slick.jdbc.H2Profile.api._
+import SpannerProfile.api._
 import slick.lifted.{ProvenShape, ForeignKeyQuery}
 
 // A Suppliers table with 6 columns: id, name, street, city, state, zip
@@ -16,6 +16,12 @@ class Suppliers(tag: Tag)
   // Every table needs a * projection with the same type as the table's type parameter
   def * : ProvenShape[(Int, String, String, String, String, String)] =
     (id, name, street, city, state, zip)
+}
+object Suppliers {
+  val create = sqlu"""create table SUPPLIERS (SUP_ID INT64 NOT NULL, SUP_NAME STRING(MAX) NOT NULL, STREET STRING(MAX) NOT NULL, CITY STRING(MAX) NOT NULL, STATE STRING(MAX) NOT NULL, ZIP STRING(MAX) NOT NULL) PRIMARY KEY (SUP_ID)"""
+}
+object Coffees {
+  val create = sqlu"""create table COFFEES (COF_NAME STRING(254) NOT NULL, SUP_ID INT64 NOT NULL, PRICE FLOAT64 NOT NULL, SALES INT64 NOT NULL, TOTAL INT64 NOT NULL) PRIMARY KEY (COF_NAME)"""
 }
 
 // A Coffees table with 5 columns: name, supplier id, price, sales, total

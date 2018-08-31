@@ -2,11 +2,11 @@ import scala.concurrent.{Future, Await}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import slick.basic.DatabasePublisher
-import slick.jdbc.H2Profile.api._
+import SpannerProfile.api._
 
 // The main application
 object HelloSlick extends App {
-  val db = Database.forConfig("h2mem1")
+  val db = Database.forConfig("spanner")
   try {
 
     // The query interface for the Suppliers table
@@ -18,7 +18,8 @@ object HelloSlick extends App {
     val setupAction: DBIO[Unit] = DBIO.seq(
       // Create the schema by combining the DDLs for the Suppliers and Coffees
       // tables using the query interfaces
-      (suppliers.schema ++ coffees.schema).create,
+//      Suppliers.create,
+//      Coffees.create,
 
       // Insert some suppliers
       suppliers += (101, "Acme, Inc.", "99 Market Street", "Groundsville", "CA", "95199"),

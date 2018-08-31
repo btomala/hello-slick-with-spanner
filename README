@@ -1,2 +1,1 @@
-This sample project is part of the Slick documentation.
-See http://slick.lightbend.com/docs/ for details.
+It is POC Slick and Google Cloud Spanner. It is possible to communicate with the database using Slick, but it requires to write each SQL by hand or to write your SpannerProfile (I think).

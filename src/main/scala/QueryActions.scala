@@ -1,4 +1,4 @@
-import slick.jdbc.H2Profile.api._
+import SpannerProfile.api._
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
@@ -15,7 +15,7 @@ object QueryActions extends App {
   }
   val dict = TableQuery[Dict]
 
-  val db = Database.forConfig("h2mem1")
+  val db = Database.forConfig("spanner")
   try {
 
     //#upTo
